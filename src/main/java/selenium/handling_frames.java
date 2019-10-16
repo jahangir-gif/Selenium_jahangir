@@ -1,56 +1,61 @@
 package selenium;
 
-import static org.testng.Assert.assertEquals;
-
-import java.text.ParseException;
 import java.util.List;
 
+import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class handling_frames {
-	public static void main(String[] args) throws ParseException, InterruptedException {
+		WebDriver d;
 
-	WebDriver d;
-	System.setProperty("webdriver.gecko.driver", "C:/Users/Nisum/Desktop/jahangir/Softwares/geckodriver.exe");
-	d = new FirefoxDriver();
-	d.manage().window().maximize();
-	d.get("https://www.toolsqa.com/iframe-practice-page/");
+		@Test
+		public void handling_frames() throws InterruptedException{
+		System.setProperty("webdriver.gecko.driver", "C:/Users/Nisum/Desktop/jahangir/Softwares/geckodriver.exe");
+		d = new FirefoxDriver();
+		d.manage().window().maximize();
 
-			assertEquals("IFrame practice page",d.getTitle());
-			/*List<WebElement> f=d.findElements(By.tagName("iframe"));
-			System.out.println("No of frames:"+f.size());*/
-			
-			//By executing a java script
-			JavascriptExecutor exe = (JavascriptExecutor) d;
-			Integer numberOfFrames = Integer.parseInt(exe.executeScript("return window.length").toString());
-			System.out.println("Number of iframes on the page are " + numberOfFrames);
+		d.get("https://seleniumhq.github.io/selenium/docs/api/java/");
 
-			//By finding all the web elements using iframe tag
-			List<WebElement> iframeElements = d.findElements(By.tagName("iframe"));
-			System.out.println("The total number of iframes are " + iframeElements.size());
-			
+		//assertEquals("Generated Documentation (Untitled)",d.getTitle());
+		List<WebElement> f=d.findElements(By.tagName("frame"));
+		System.out.println("No of frames:"+f.size());
+
+		WebElement frame1 = d.findElement(By.xpath("//frameset/frameset/frame[1]"));
+		d.switchTo().frame(frame1);
+		//Type text
+		String pack = d.findElement(By.xpath("//div[@class='indexContainer']/h2[1]")).getText();
+		System.out.println("get the text if frame1 = " + pack);
+		//Outside frame
+		d.switchTo().defaultContent();
+		Thread.sleep(3000);
+		WebElement frame2 = d.findElement(By.xpath("//frameset/frameset/frame[2]"));
+		//WebElement frame2 = d.findElement(By.xpath("/html/frameset/frame")); 
+
+		d.switchTo().frame(frame2);
+		//Type text
+		String pack1 = d.findElement(By.xpath("/html/body/div/ul/li[101]/a")).getText();
+		System.out.println("get the text if frame2 = " + pack1);
+				
+		/*
+			d.get("http://jqueryui.com/autocomplete/");
+			assertEquals("Autocomplete | jQuery UI",d.getTitle());
+			List<WebElement> f=d.findElements(By.tagName("iframe"));
+			System.out.println("No of frames:"+f.size());
+			//Switch driver focus to frame
+			//d.switchTo().frame(d.findElement(By.className("demo-frame")));
 			d.switchTo().frame(0);
 			//Type text
-			String frame1 = d.findElement(By.xpath("//*[@id=\"primary-menu\"]/li[2]/ul/li[8]/ul/li[2]/a/span/span")).getText();
-			System.out.println("get the text if frame1 = " + frame1);
-			//Outside frame
-			
-			WebElement iframeElement = d.findElement(By.xpath("//*[@id=\"IF2\"]"));
-
-			d.switchTo().frame(iframeElement);
-			String frame2 = d.findElement(By.xpath("//*[@id=\"sidebar\"]/aside[1]/h3")).getText();
-			System.out.println("get the text if frame1 = " + frame2);
+			d.findElement(By.id("tags")).sendKeys("Selenium");
 			//Outside frame
 			d.switchTo().defaultContent();
-			System.out.println("get the text if frame1 after switch default = " + frame1);
+			String text = d.findElement(By.xpath("//div[@id=\"sidebar\"]/aside[1]/ul/li[1]/a")).getText();
+			System.out.println("print the text of element = " + text);
+			Thread.sleep(4000);*/
 
-			//d.findElement(By.linkText("Button")).click();
-					
-			System.out.println("completed");
-		
+		System.out.println("completed");
+d.close();
 
-}}
+	}}
