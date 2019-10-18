@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
+  <parameter name="browser" value="GC"/>
+  <test name="Test(failed)">
+    <parameter name="browser" value="GC"/>
+    <classes>
+      <class name="selenium.Priority_testng">
+        <methods>
+          <include name="peformSeachAndClick1stLink"/>
+          <include name="FaceBookPageTitleVerification"/>
+        </methods>
+      </class> <!-- selenium.Priority_testng -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

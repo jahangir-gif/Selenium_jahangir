@@ -2,9 +2,13 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite">
   <test name="Test">
+      <parameter name="browser" value="GC"/>   
+  
     <classes>
-      <class name="selenium.Testng_annotations"/>
-      <class name="selenium.TestngAnnotation"/>
+          <class name="selenium.Annotation_parameter"/>
+    
+      <class name="selenium.Priority_testng"/>
+       <class name="selenium.dropdown"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
