@@ -3,6 +3,8 @@ import org.testng.annotations.Test;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.AfterTest;
@@ -12,7 +14,7 @@ import org.testng.annotations.AfterSuite;
 
 public class Testng_annotations {
 
-	//public static void main(String[] args) {
+	WebDriver d;
 		
 		public class TestngAnnotation {
 		   // test case 1
@@ -60,9 +62,14 @@ public class Testng_annotations {
 		   @BeforeSuite
 		   public void beforeSuite() {
 		      System.out.println("in beforeSuite");
+		      System.setProperty("webdriver.gecko.driver", "C:/Users/Nisum/Desktop/jahangir/Softwares/geckodriver.exe");
+				d = new FirefoxDriver();
+				d.manage().window().maximize();
 		   }
 
 		   @AfterSuite
 		   public void afterSuite() {
 		      System.out.println("in afterSuite");
+		      d.close();
+		      
 		   }}}

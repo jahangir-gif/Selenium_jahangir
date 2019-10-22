@@ -3,11 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="selenium.data_provider">
+      <class name="selenium.Depends_on_group">
         <methods>
-          <include name="test" invocation-numbers="0 1"/>
+          <include name="LogOut"/>
+          <include name="OpenBrowser"/>
+          <include name="SignIn"/>
         </methods>
-      </class> <!-- selenium.data_provider -->
+      </class> <!-- selenium.Depends_on_group -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
