@@ -1,10 +1,9 @@
 package selenium;
-
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-public class Listeners_types implements ITestListener {
+public class Listeners_types  implements ITestListener {
     public void onTestStart(ITestResult result) {
         System.out.println("New Test Started" + result.getName());
     }
